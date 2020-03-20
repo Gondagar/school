@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Logo page</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <link rel="stylesheet " href="/resourse/css/style.css">
+
+</head>
+
+<body>
+
+
+<header class="navbar navbar-toggleable-md navbar-light bg-faded header-border">
+    <div class="container">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand mb-0" href="#">
+            <img src="https://png.icons8.com/java/ios7/32" width="32" height="32">
+        </a>
+        <a class="navbar-brand mb-0" href="#"><strong>Java</strong>Dev</a>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mt-2 mt-md-0">
+                <li class="nav-item active mr-1">
+                    <a href="/auth/registry" class="btn btn-success">Rejestracja</a>
+                </li>
+                <li class="nav-item active">
+                    <a href="/auth/login" class="btn btn-info">Zaloguj sie</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</header>
+
+<!-- particles.js container -->
+<div id="particles-js"></div>
+<script>
+    window.onload = function () {
+        particlesJS.load('particles-js', 'https://api.myjson.com/bins/wj7mv.json', function () {
+            console.log('callback - particles.js config loaded');
+        });
+    };
+
+</script>
+
+<footer>
+    <div class="container fixed-bottom">
+        <div class="row">
+            <div class="col bg-inverse p-2">
+                <p class="text-white text-center mb-0">Made with <i class="fa fa-heart text-danger"
+                                                                    aria-hidden="true"></i> by Serhij Moskalenko</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- SCRIPTS: Begin -->
+<script src="/resourse/js/particles.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+        integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+        integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
+<!-- SCRIPTS: End -->
+</body>
+
+</html>
