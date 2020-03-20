@@ -1,0 +1,2 @@
+# school
+init
