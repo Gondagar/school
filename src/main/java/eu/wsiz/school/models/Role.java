@@ -1,4 +1,4 @@
-package eu.wsiz.school.models.enums;
+package eu.wsiz.school.models;
 
 public enum Role {
 

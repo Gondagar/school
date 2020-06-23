@@ -3,7 +3,7 @@ package eu.wsiz.school.controller;
 
 import eu.wsiz.school.models.Group;
 import eu.wsiz.school.models.User;
-import eu.wsiz.school.models.enums.Role;
+import eu.wsiz.school.models.Role;
 import eu.wsiz.school.repositories.GroupRepository;
 import eu.wsiz.school.repositories.UserRepository;
 import org.slf4j.Logger;
@@ -42,7 +42,7 @@ public class AuthController {
     private GroupRepository groupRepository;
 
     @GetMapping(path = "/registry")
-    public String registry() throws ServletException, IOException {
+    public String registry() {
         System.out.println("start registry");
         return REGISTRY;
     }
@@ -83,6 +83,7 @@ public class AuthController {
                     .role(Role.USER)
                     .group(group)
                     .password(password).build();
+
             userRepository.save(newUser);
             log.info("User add");
             return LOGIN;
@@ -106,6 +107,7 @@ public class AuthController {
 
             User user = userRepository.getUserByEmail(email).get();
             if (user.getPassword().equals(password)) {
+
 
 
                 log.info("Password valid ");

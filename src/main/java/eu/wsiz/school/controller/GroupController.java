@@ -1,7 +1,6 @@
 package eu.wsiz.school.controller;
 
 
-import eu.wsiz.school.controller.student.ShowStudentsController;
 import eu.wsiz.school.models.Group;
 import eu.wsiz.school.models.Lesson;
 import eu.wsiz.school.repositories.GroupRepository;
@@ -24,7 +23,7 @@ import java.util.Optional;
 @RequestMapping(path = "/groups") // This means URL's start with /demo (after Application path)
 public class GroupController {
 
-    private static final Logger log = LoggerFactory.getLogger(ShowStudentsController.class);
+    private static final Logger log = LoggerFactory.getLogger(GroupController.class);
     public static final String ADMIN_PAGE = "admin/showAllGroup";
     public static final String EDIT_GROUP_PAGE = "admin/editGroup";
 

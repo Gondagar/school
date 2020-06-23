@@ -64,7 +64,7 @@
                         <div class="col-8">
                             <strong>${group.theme}</strong>
                             <p>${group.place}</p>
-                            <p class="font-weight-bold pgs-text-color d-inline mt-1">Uzupewnij ankietę:</p>
+                            <p class="font-weight-bold pgs-text-color d-inline mt-1">Teacher:</p>
                             <a href="#" class="d-inline text-muted">${group.teacher}</a>
                         </div>
 

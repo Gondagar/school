@@ -39,9 +39,9 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand mb-0" href="#">
-            <img src="https://png.icons8.com/java/ios7/32" width="32" height="32">
+            <img src="https://img.icons8.com/bubbles/2x/school.png" width="32" height="32">
         </a>
-        <a class="navbar-brand mb-0" href="#"><strong>Java</strong>Dev</a>
+        <a class="navbar-brand mb-0" href="#"><strong>Online</strong> school</a>
 
         <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
             <ul class="navbar-nav mt-2 mt-md-0">
@@ -58,7 +58,7 @@
                     <a class="nav-link" href="/presences/admin/">Lista obecności</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/logout">Logout</a>
+                    <a class="nav-link" href="/">Logout</a>
                 </li>
             </ul>
         </div>

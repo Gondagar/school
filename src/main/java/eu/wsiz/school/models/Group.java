@@ -1,6 +1,5 @@
 package eu.wsiz.school.models;
 
-import com.sun.javafx.geom.transform.Identity;
 import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -33,7 +32,7 @@ public class Group {
             name = "group_lesson",
             joinColumns = @JoinColumn(name = "group_id"),
             inverseJoinColumns = @JoinColumn(name = "lesson_id"))
-    Set<Lesson> lessons;
+    List<Lesson> lessons;
 
     @OneToMany(mappedBy = "group", fetch = FetchType.EAGER)
     Set<User> users;

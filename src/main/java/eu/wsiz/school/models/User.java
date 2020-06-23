@@ -1,7 +1,6 @@
 package eu.wsiz.school.models;
 
 
-import eu.wsiz.school.models.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

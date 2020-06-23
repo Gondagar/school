@@ -1,9 +1,11 @@
 package eu.wsiz.school.controller;
 
 
-import eu.wsiz.school.controller.student.ShowStudentsController;
 import eu.wsiz.school.models.Lesson;
+import eu.wsiz.school.models.Presence;
+import eu.wsiz.school.models.User;
 import eu.wsiz.school.repositories.LessonRepository;
+import eu.wsiz.school.repositories.PresenceRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,21 +16,27 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Controller    // This means that this class is a Controller
 @RequestMapping(path = "/lessons") // This means URL's start with /demo (after Application path)
 public class LessonController {
 
-    private static final Logger log = LoggerFactory.getLogger(ShowStudentsController.class);
+    private static final Logger log = LoggerFactory.getLogger(LessonController.class);
     public static final String ADMIN_PAGE = "admin/showAllLesson";
     public static final String USER_PAGE = "user/showAllLesson";
     public static final String EDIT_LESSON_PAGE = "admin/editLessons";
 
     @Autowired
     private LessonRepository lessonRepository;
+
+    @Autowired
+    private PresenceRepository presenceRepository;
+
 
 
     @GetMapping(path = "/")
@@ -70,11 +78,23 @@ public class LessonController {
     }
 
     @GetMapping(path = "/user/")
-    public String getAllLessons(Model model) throws ServletException, IOException {
+    public String getAllLessons(Model model, HttpServletRequest request) throws ServletException, IOException {
 
         log.debug("Отримано список заннять для користувача");
         List<Lesson> lessons = lessonRepository.findAll();
+        HttpSession session = request.getSession();
+        User currentUser = (User) session.getAttribute("student");
+       // List<Lesson> lessons = currentUser.getGroup().getLessons();
+
+        System.out.println(currentUser);
+       // List<Presence> presences = presenceRepository.findByUserId(currentUser.getId());
+        int[] ints = new int[] {1,1,-1};
+
+
+
+
         model.addAttribute("lessons", lessons);
+        model.addAttribute("presences", ints);
         return USER_PAGE;
 
     }

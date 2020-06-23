@@ -1,15 +1,14 @@
 package eu.wsiz.school.controller;
 
 
-import eu.wsiz.school.controller.student.ShowStudentsController;
 import eu.wsiz.school.models.User;
-import eu.wsiz.school.models.enums.Role;
+import eu.wsiz.school.models.Role;
 import eu.wsiz.school.repositories.UserRepository;
+import eu.wsiz.school.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,23 +18,23 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @Controller    // This means that this class is a Controller
 @RequestMapping(path = "/users") // This means URL's start with /demo (after Application path)
 public class UserController {
 
-    private static final Logger log = LoggerFactory.getLogger(ShowStudentsController.class);
-//src/main/webapp/views/admin/showAllStudent.jsp
-      public static final String PAGE_OK = "admin/showAllStudent";
-      public static final String RELOAD_PAGE = "redirect:/users/admin/";
-  //  public static final String PAGE_ERROR = "/views/error/error.jsp";
-  //  public static final String PAGE_RE_ADD = "/views/admin/showAllStudent.jsp";
+    private static final Logger log = LoggerFactory.getLogger(UserController.class);
+    //src/main/webapp/views/admin/showAllStudent.jsp
+    public static final String PAGE_OK = "admin/showAllStudent";
+    public static final String RELOAD_PAGE = "redirect:/users/admin/";
+    //  public static final String PAGE_ERROR = "/views/error/error.jsp";
+    //  public static final String PAGE_RE_ADD = "/views/admin/showAllStudent.jsp";
 
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
+    //  private UserRepository userRepository;
 
     @PostMapping(path = "/") // Map ONLY GET Requests
     public String addNewUser(HttpServletRequest req, HttpServletResponse resp) {
@@ -54,19 +53,19 @@ public class UserController {
                 .email(email)
                 .role(Role.USER)
                 .password(pass).build();
-        userRepository.save(n);
+        userService.save(n);
 
         return RELOAD_PAGE;
     }
 
     @GetMapping(path = "/admin/")
-    public  String getAllUsers(HttpServletRequest req) throws ServletException, IOException {
+    public String getAllUsers(HttpServletRequest req) throws ServletException, IOException {
 
         HttpSession session = req.getSession();
-        List<User> users = userRepository.findAll();
+        List<User> users = userService.getUsers();
         session.setAttribute("users", users);
 
-        return  PAGE_OK;
+        return PAGE_OK;
 
     }
 
@@ -81,17 +80,17 @@ public class UserController {
 
         log.debug("Получены новые данные для обновления урока в DB: name = {}, surname = {}, email = {}.", name, surname, email);
 
-        Optional<User> byId = userRepository.findById(id);
-        if (byId.isPresent()) {
-            User user = byId.get();
-            user.setId(id);
-            user.setName(name);
-            user.setSurname(surname);
-            user.setEmail(email);
-            userRepository.save(user);
-        }
+        User user = userService.getOne(id);
 
-        List<User> users = userRepository.findAll();
+        user.setId(id);
+        user.setName(name);
+        user.setSurname(surname);
+        user.setEmail(email);
+
+        userService.update(user);
+
+
+        List<User> users = userService.getUsers();
         model.addObject("users", users);
 
         return RELOAD_PAGE;
@@ -99,14 +98,12 @@ public class UserController {
     }
 
     @PostMapping(path = "/delete/")
-    public String deleteUser(@RequestParam(name = "id") long id){
-        System.out.println("Start drop user with id " + id );
-        userRepository.deleteById(id);
+    public String deleteUser(@RequestParam(name = "id") long id) {
+        System.out.println("Start drop user with id " + id);
+        userService.delete(id);
         return RELOAD_PAGE;
 
     }
-
-
 
 
 }

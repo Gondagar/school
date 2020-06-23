@@ -36,9 +36,9 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand mb-0" href="#">
-            <img src="https://png.icons8.com/java/ios7/32" width="32" height="32">
+            <img src="https://img.icons8.com/bubbles/2x/school.png" width="32" height="32">
         </a>
-        <a class="navbar-brand mb-0" href="#"><strong>Java</strong>Dev</a>
+        <a class="navbar-brand mb-0" href="#"><strong>Online</strong> school</a>
 
         <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
             <ul class="navbar-nav mt-2 mt-md-0">
@@ -55,7 +55,7 @@
                     <a class="nav-link" href="/presences/admin/">Lista obecności</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/logout">Logout</a>
+                    <a class="nav-link" href="/">Logout</a>
                 </li>
             </ul>
         </div>
@@ -71,8 +71,8 @@
         <div class="row pt-5">
             <div class="col-12">
                 <div class="text-center mt-5">
-                    <h3 class="card-title">Zajęcia JavaDev</h3>
-                    <p class="card-text text-muted">Lista zajęć</p>
+                    <h3 class="card-title">Lista dostępnych grup</h3>
+
                 </div>
             </div>
         </div>
@@ -83,8 +83,7 @@
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0 justify-content-end">
                         <button type="button" class="btn btn-sm btn-success" data-toggle="modal"
                                 data-target="#additionModal"
-                                onClick='location.href="/lessons/"'>Dodaj
-                            zajęcie
+                                onClick='location.href="/groups/"'>Dodaj
                         </button>
                     </div>
                 </div>

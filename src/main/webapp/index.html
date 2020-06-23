@@ -7,7 +7,6 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
     <link rel="stylesheet " href="/resourse/css/style.css">
-
 </head>
 
 <body>
@@ -21,9 +20,9 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand mb-0" href="#">
-            <img src="https://png.icons8.com/java/ios7/32" width="32" height="32">
+            <img src="https://img.icons8.com/bubbles/2x/school.png" width="32" height="32">
         </a>
-        <a class="navbar-brand mb-0" href="#"><strong>Java</strong>Dev</a>
+        <a class="navbar-brand mb-0" href="#"><strong>Online</strong> school</a>
 
         <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
             <ul class="navbar-nav mt-2 mt-md-0">
@@ -41,21 +40,12 @@
 
 <!-- particles.js container -->
 <div id="particles-js"></div>
-<script>
-    window.onload = function () {
-        particlesJS.load('particles-js', 'https://api.myjson.com/bins/wj7mv.json', function () {
-            console.log('callback - particles.js config loaded');
-        });
-    };
-
-</script>
-
 <footer>
     <div class="container fixed-bottom">
         <div class="row">
             <div class="col bg-inverse p-2">
-                <p class="text-white text-center mb-0">Made with <i class="fa fa-heart text-danger"
-                                                                    aria-hidden="true"></i> by Serhij Moskalenko</p>
+               
+                <p class="text-white text-center mb-0">Made with <i class="fa fa-heart text-danger" aria-hidden="true"></i> by Alevtyna Yarychevska and Serhij Moskalenko</p>
             </div>
         </div>
     </div>
@@ -63,7 +53,6 @@
 
 
 <!-- SCRIPTS: Begin -->
-<script src="/resourse/js/particles.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
         integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
         crossorigin="anonymous"></script>
@@ -73,7 +62,18 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
         integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
         crossorigin="anonymous"></script>
+
+<script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <!-- SCRIPTS: End -->
+
+<script>
+    $(function(){
+        particlesJS('particles-js', { "particles": { "number": { "value": 80, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#ffffff" }, "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" }, "polygon": { "nb_sides": 5 }, "image": { "src": "img/github.svg", "width": 100, "height": 100 } }, "opacity": { "value": 0.5, "random": false, "anim": { "enable": false, "speed": 1, "opacity_min": 0.1, "sync": false } }, "size": { "value": 3, "random": true, "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false } }, "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 6, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" }, "resize": true }, "modes": { "grab": { "distance": 400, "line_linked": { "opacity": 1 } }, "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 }, "repulse": { "distance": 200, "duration": 0.4 }, "push": { "particles_nb": 4 }, "remove": { "particles_nb": 2 } } }, "retina_detect": true }, function () {
+            console.log('callback - particles.js config loaded');
+        });
+    });       
+</script>
+
 </body>
 
 </html>
