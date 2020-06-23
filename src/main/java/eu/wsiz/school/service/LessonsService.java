@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -25,14 +26,14 @@ public class LessonsService {
 
     /**
      * Save one lesson.
-     *
+     * @param lesson lesson to save
      * @return saved lesson with id
 
      * @see Lesson
      */
-    public Lesson save(Lesson user) {
+    public Lesson save(Lesson lesson) {
 
-        Lesson save = lessonRepository.save(user);
+        Lesson save = lessonRepository.save(lesson);
 
         return save;
 
@@ -53,10 +54,10 @@ public class LessonsService {
     /**
      * Get lessons
      *
-     * @return Map<String, Object> in JSON + total elements and page.
+     * @return  List
      */
 
-    public List<Lesson> getUsers() {
+    public List<Lesson> getLessons() {
 
 
         List<Lesson> response = lessonRepository.findAll();
@@ -71,9 +72,14 @@ public class LessonsService {
      * @return lesson by id
      * @see User
      */
+
+    @Transactional
     public Lesson getOne(Long id) {
-        Lesson lesson = lessonRepository.getOne(id);
-        return lesson;
+        Optional<Lesson> byId = lessonRepository.findById(id);
+        if(byId.isPresent()){
+            return  byId.get();
+        }
+        return null;
 
     }
 
@@ -83,7 +89,6 @@ public class LessonsService {
      * Delete user by id.
      *
      * @param id  user id
-     * @return void
      *
      * @see User
      */

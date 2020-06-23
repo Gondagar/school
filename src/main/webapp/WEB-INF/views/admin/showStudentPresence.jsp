@@ -16,7 +16,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
 
-    <link rel="stylesheet " href="/resourse/css/style.css">
+    <link rel="stylesheet " href="/resourse/css/old/style.css">
     <link rel="stylesheet" href="bootstrap.css">
 
 </head>

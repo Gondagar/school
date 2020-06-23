@@ -1,6 +1,7 @@
 package eu.wsiz.school.controller;
 
 
+import eu.wsiz.school.models.Lesson;
 import eu.wsiz.school.models.User;
 import eu.wsiz.school.models.Role;
 import eu.wsiz.school.repositories.UserRepository;
@@ -20,6 +21,12 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * The UserController is a controller for working with users.
+ */
+
+
+
 @Controller    // This means that this class is a Controller
 @RequestMapping(path = "/users") // This means URL's start with /demo (after Application path)
 public class UserController {
@@ -35,6 +42,15 @@ public class UserController {
     @Autowired
     private UserService userService;
     //  private UserRepository userRepository;
+
+
+    /**
+     * Add one user.
+     *
+     * @return saved user with id
+
+     * @see User
+     */
 
     @PostMapping(path = "/") // Map ONLY GET Requests
     public String addNewUser(HttpServletRequest req, HttpServletResponse resp) {
@@ -58,6 +74,15 @@ public class UserController {
         return RELOAD_PAGE;
     }
 
+
+    /**
+     * Get all users.
+     *
+     * @return req HttpServletRequest
+
+     * @see  User list
+     */
+
     @GetMapping(path = "/admin/")
     public String getAllUsers(HttpServletRequest req) throws ServletException, IOException {
 
@@ -66,9 +91,14 @@ public class UserController {
         session.setAttribute("users", users);
 
         return PAGE_OK;
-
     }
 
+    /**
+     * Update user.
+     * @param model MVC object
+     * @return updated user with id
+     * @see User
+     */
 
     @PostMapping(path = "/update/")
     public String updateUser(HttpServletRequest req, ModelAndView model) throws ServletException, IOException {
@@ -89,13 +119,17 @@ public class UserController {
 
         userService.update(user);
 
-
         List<User> users = userService.getUsers();
         model.addObject("users", users);
 
         return RELOAD_PAGE;
 
     }
+
+    /**
+     * Update user.
+     * @param id user id
+     */
 
     @PostMapping(path = "/delete/")
     public String deleteUser(@RequestParam(name = "id") long id) {

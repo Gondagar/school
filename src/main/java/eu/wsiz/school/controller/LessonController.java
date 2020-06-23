@@ -22,6 +22,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+/**
+ * The LessonController is a controller for working with lessons.
+ */
+
 @Controller    // This means that this class is a Controller
 @RequestMapping(path = "/lessons") // This means URL's start with /demo (after Application path)
 public class LessonController {
@@ -37,12 +41,28 @@ public class LessonController {
     @Autowired
     private PresenceRepository presenceRepository;
 
+    /**
+     * Start add one lesson.
+     *
+     * @return web form
 
+     * @see Lesson
+     */
 
     @GetMapping(path = "/")
     public String addNewLesson(){
         return "admin/addLessons";
     }
+
+
+
+    /**
+     * End one lesson.
+     *
+     * @return saved lesson with id
+
+     * @see Lesson
+     */
 
     @PostMapping(path = "/")
     public String addNewLesson(HttpServletRequest req, ModelAndView model) {
@@ -77,6 +97,15 @@ public class LessonController {
         return "redirect:/lessons/admin/";
     }
 
+    /**
+     * Get all lessons.
+     *
+     * @return lessons list
+
+     * @see Lesson
+     */
+
+
     @GetMapping(path = "/user/")
     public String getAllLessons(Model model, HttpServletRequest request) throws ServletException, IOException {
 
@@ -99,6 +128,13 @@ public class LessonController {
 
     }
 
+    /**
+     * Get all lessons.
+     *
+     * @return lessons list for admin
+
+     * @see Lesson
+     */
     @GetMapping(path = "/admin/")
     public String getAllLessonsAdmin(Model model) throws ServletException, IOException {
 
@@ -111,7 +147,13 @@ public class LessonController {
     }
 
 
+    /**
+     * Start edit one lesson.
+     *
+     * @return web form
 
+     * @see Lesson
+     */
 
     @GetMapping(path = "/edit/{id}")
     public String editLesson(Model model, @PathVariable(name = "id") Long id) throws ServletException, IOException {
@@ -126,7 +168,13 @@ public class LessonController {
 
     }
 
+    /**
+     * End edit one lesson.
+     *
+     * @return saved lesson with id
 
+     * @see Lesson
+     */
 
     @PutMapping(path = "/")
     public @ResponseBody
@@ -161,6 +209,12 @@ public class LessonController {
 
     }
 
+    /**
+     * Delete  one lesson.
+     *
+     * @see Lesson
+     */
+
     @DeleteMapping(path = "/")
     public @ResponseBody
     String deleteLesson(HttpServletRequest req, @RequestParam(name = "id") long id) {
@@ -170,6 +224,11 @@ public class LessonController {
 
     }
 
+    /**
+     * Date formatter method
+     *
+     * @see Lesson
+     */
 
     private String[] parseDate(String date) {
         String[] parseDateAndTime = date.split("T");

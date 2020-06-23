@@ -19,6 +19,11 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
+
+/**
+ * The GroupController is a controller for working with group.
+ */
+
 @Controller    // This means that this class is a Controller
 @RequestMapping(path = "/groups") // This means URL's start with /demo (after Application path)
 public class GroupController {
@@ -30,11 +35,27 @@ public class GroupController {
     @Autowired
     private GroupRepository groupRepository;
 
+    /**
+     * Start add one group.
+     *
+     * @return web form
+
+     * @see Group
+     */
 
     @GetMapping(path = "/")
     public String addNewGroup() {
         return "admin/addGroup";
     }
+
+    /**
+     * End one group.
+     *
+     * @return saved group with id
+
+     * @see Lesson
+     */
+
 
     @PostMapping(path = "/")
     public String addNewGroup(HttpServletRequest req, ModelAndView model) {
@@ -58,6 +79,15 @@ public class GroupController {
     }
 
 
+    /**
+     * Get all group.
+     *
+     * @return groups list
+
+     * @see Group
+     */
+
+
     @GetMapping(path = "/admin/")
     public String getAllLessonsAdmin(Model model) {
 
@@ -68,6 +98,14 @@ public class GroupController {
         return ADMIN_PAGE;
 
     }
+
+
+    /**
+     * Start edit one group.
+     *
+     * @return   edit web form
+     * @see Group
+     */
 
 
     @GetMapping(path = "/edit/{id}")
@@ -83,6 +121,13 @@ public class GroupController {
 
     }
 
+    /**
+     * End edit one group.
+     *
+     * @return saved group with id
+
+     * @see Group
+     */
 
     @PostMapping(path = "/edit/")
     public String updateLesson(HttpServletRequest req, @RequestParam(name = "id") Long id,  @RequestParam(name = "name") String name) throws ServletException, IOException {
@@ -97,6 +142,12 @@ public class GroupController {
         return "redirect:/groups/admin/";
 
     }
+
+    /**
+     * Delete one group.
+     * @param id  group id
+     * @see Group
+     */
 
     @GetMapping(path = "/delete/{id}")
     public @ResponseBody

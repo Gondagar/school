@@ -21,6 +21,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/**
+ * The AuthController is a controller for working with  user authentication and authorization(login) .
+ */
+
+
 @Controller
 @RequestMapping(path = "/auth")
 public class AuthController {
@@ -41,11 +46,25 @@ public class AuthController {
     @Autowired
     private GroupRepository groupRepository;
 
+    /**
+     * Start registry user in system.
+     *
+     * @return   registry web form
+     * @see User
+     */
+
     @GetMapping(path = "/registry")
     public String registry() {
         System.out.println("start registry");
         return REGISTRY;
     }
+
+    /**
+     * Login endpoint's
+     *
+     * @return   registry web form
+     * @see User
+     */
 
     @GetMapping(path = "/login")
     public String login() throws ServletException, IOException {
@@ -54,6 +73,13 @@ public class AuthController {
         return LOGIN;
     }
 
+
+    /**
+     * Finish registry user in system.
+     *
+     * @return  redirect to login page
+     * @see User
+     */
 
     @PostMapping(path = "/registry")
     public String registry(HttpServletRequest req) throws ServletException, IOException {
@@ -94,6 +120,13 @@ public class AuthController {
 
     }
 
+
+    /**
+     * Finish login user in system.
+     *
+     * @return  redirect to personal area
+     * @see User
+     */
 
     @PostMapping(path = "/login")
     String login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
